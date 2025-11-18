@@ -29,5 +29,16 @@ namespace legal_work_api.Models
         [Required]
         [StringLength(200)]
         public string Email { get; set; } = string.Empty;
+
+        // 🔗 FK para Empresa
+        [Required]
+        [ForeignKey("Empresa")]
+        public int EmpresaId { get; set; }
+
+        // 🔗 Navegação
+        public virtual EmpresaEntity Empresa { get; set; }
+
+        // 🔗 Relacionamento 1:N com Jornada
+        public virtual ICollection<JornadaEntity> Jornadas { get; set; } = new List<JornadaEntity>();
     }
 }

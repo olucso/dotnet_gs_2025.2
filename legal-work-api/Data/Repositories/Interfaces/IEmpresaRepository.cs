@@ -2,7 +2,7 @@
 
 namespace legal_work_api.Data.Repositories.Interfaces
 {
-    public interface IEmpresaEntity
+    public interface IEmpresaRepository
     {
         Task<PageResultModel<IEnumerable<EmpresaEntity>>> GetAll(int Displacement = 0, int TotalRecords = 3);
         Task<EmpresaEntity?> GetById(int id);
