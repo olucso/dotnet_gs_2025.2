@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("legal-work-api")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("legal-work-api.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecf874204b924b2c00581930a658a1c937cd201f")]
-[assembly: System.Reflection.AssemblyProductAttribute("legal-work-api")]
-[assembly: System.Reflection.AssemblyTitleAttribute("legal-work-api")]
+[assembly: System.Reflection.AssemblyProductAttribute("legal-work-api.Tests")]
+[assembly: System.Reflection.AssemblyTitleAttribute("legal-work-api.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
