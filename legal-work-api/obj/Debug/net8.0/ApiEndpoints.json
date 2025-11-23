@@ -1,6 +1,38 @@
 [
   {
-    "ContainingType": "legal_work_api.Controllers.EmpresaController",
+    "ContainingType": "legal_work_api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "legal_work_api.Dtos.UserLoginDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 401
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v1.EmpresaController",
     "Method": "Get",
     "RelativePath": "api/v1/Empresa",
     "HttpMethod": "GET",
@@ -31,7 +63,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.EmpresaController",
+    "ContainingType": "legal_work_api.Controllers.v1.EmpresaController",
     "Method": "Post",
     "RelativePath": "api/v1/Empresa",
     "HttpMethod": "POST",
@@ -62,7 +94,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.EmpresaController",
+    "ContainingType": "legal_work_api.Controllers.v1.EmpresaController",
     "Method": "Put",
     "RelativePath": "api/v1/Empresa",
     "HttpMethod": "PUT",
@@ -98,7 +130,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.EmpresaController",
+    "ContainingType": "legal_work_api.Controllers.v1.EmpresaController",
     "Method": "Get",
     "RelativePath": "api/v1/Empresa/{id}",
     "HttpMethod": "GET",
@@ -129,7 +161,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.EmpresaController",
+    "ContainingType": "legal_work_api.Controllers.v1.EmpresaController",
     "Method": "Delete",
     "RelativePath": "api/v1/Empresa/{id}",
     "HttpMethod": "DELETE",
@@ -156,7 +188,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.FuncionarioController",
+    "ContainingType": "legal_work_api.Controllers.v1.FuncionarioController",
     "Method": "Get",
     "RelativePath": "api/v1/Funcionario",
     "HttpMethod": "GET",
@@ -187,7 +219,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.FuncionarioController",
+    "ContainingType": "legal_work_api.Controllers.v1.FuncionarioController",
     "Method": "Post",
     "RelativePath": "api/v1/Funcionario",
     "HttpMethod": "POST",
@@ -218,7 +250,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.FuncionarioController",
+    "ContainingType": "legal_work_api.Controllers.v1.FuncionarioController",
     "Method": "Put",
     "RelativePath": "api/v1/Funcionario",
     "HttpMethod": "PUT",
@@ -254,7 +286,7 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.FuncionarioController",
+    "ContainingType": "legal_work_api.Controllers.v1.FuncionarioController",
     "Method": "Get",
     "RelativePath": "api/v1/Funcionario/{id}",
     "HttpMethod": "GET",
@@ -285,9 +317,633 @@
     ]
   },
   {
-    "ContainingType": "legal_work_api.Controllers.FuncionarioController",
+    "ContainingType": "legal_work_api.Controllers.v1.FuncionarioController",
     "Method": "Delete",
     "RelativePath": "api/v1/Funcionario/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v1.JornadaController",
+    "Method": "Get",
+    "RelativePath": "api/v1/Jornada",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Displacement",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TotalRecords",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[legal_work_api.Models.JornadaEntity, legal-work-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v1.JornadaController",
+    "Method": "Post",
+    "RelativePath": "api/v1/Jornada",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.JornadaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.JornadaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v1.JornadaController",
+    "Method": "Put",
+    "RelativePath": "api/v1/Jornada",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.JornadaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.JornadaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v1.JornadaController",
+    "Method": "Get",
+    "RelativePath": "api/v1/Jornada/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.JornadaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v1.JornadaController",
+    "Method": "Delete",
+    "RelativePath": "api/v1/Jornada/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.EmpresaController",
+    "Method": "Get",
+    "RelativePath": "api/v2/Empresa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Displacement",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TotalRecords",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[legal_work_api.Models.EmpresaEntity, legal-work-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.EmpresaController",
+    "Method": "Post",
+    "RelativePath": "api/v2/Empresa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.EmpresaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.EmpresaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.EmpresaController",
+    "Method": "Put",
+    "RelativePath": "api/v2/Empresa",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.EmpresaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.EmpresaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.EmpresaController",
+    "Method": "Get",
+    "RelativePath": "api/v2/Empresa/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.EmpresaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.EmpresaController",
+    "Method": "Delete",
+    "RelativePath": "api/v2/Empresa/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.FuncionarioController",
+    "Method": "Get",
+    "RelativePath": "api/v2/Funcionario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Displacement",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TotalRecords",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[legal_work_api.Models.FuncionarioEntity, legal-work-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.FuncionarioController",
+    "Method": "Post",
+    "RelativePath": "api/v2/Funcionario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.FuncionarioDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.FuncionarioEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.FuncionarioController",
+    "Method": "Put",
+    "RelativePath": "api/v2/Funcionario",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.FuncionarioDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.FuncionarioEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.FuncionarioController",
+    "Method": "Get",
+    "RelativePath": "api/v2/Funcionario/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[legal_work_api.Models.FuncionarioEntity, legal-work-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.FuncionarioController",
+    "Method": "Delete",
+    "RelativePath": "api/v2/Funcionario/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.JornadaController",
+    "Method": "Get",
+    "RelativePath": "api/v2/Jornada",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Displacement",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TotalRecords",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[legal_work_api.Models.JornadaEntity, legal-work-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.JornadaController",
+    "Method": "Post",
+    "RelativePath": "api/v2/Jornada",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.JornadaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.JornadaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.JornadaController",
+    "Method": "Put",
+    "RelativePath": "api/v2/Jornada",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "entity",
+        "Type": "legal_work_api.Dtos.JornadaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.JornadaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.JornadaController",
+    "Method": "Get",
+    "RelativePath": "api/v2/Jornada/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "legal_work_api.Models.JornadaEntity",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "legal_work_api.Controllers.v2.JornadaController",
+    "Method": "Delete",
+    "RelativePath": "api/v2/Jornada/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

@@ -3,6 +3,7 @@ using legal_work_api.Data.AppData;
 using legal_work_api.Data.Repositories;
 using legal_work_api.Data.Repositories.Interfaces;
 using legal_work_api.HealthChecks;
+using legal_work_api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -121,6 +122,8 @@ builder.Services.AddHealthChecksUI(options =>
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+
+builder.Services.AddScoped<JwtService>();
 
 builder.Services.AddAuthentication(options =>
 {

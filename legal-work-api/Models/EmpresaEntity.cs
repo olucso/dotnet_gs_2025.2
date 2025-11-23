@@ -25,7 +25,5 @@ namespace legal_work_api.Models
         [Required]
         [StringLength(11, ErrorMessage = "O número de telefone deve conter até 11 dígitos.")]
         public string Telefone { get; set; } = string.Empty;
-
-        public virtual ICollection<FuncionarioEntity> Funcionarios { get; set; } = new List<FuncionarioEntity>();
     }
 }

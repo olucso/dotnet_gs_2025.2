@@ -5,6 +5,8 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace legal_work_api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly JwtService _jwtService;

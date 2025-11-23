@@ -4,8 +4,915 @@
     "title": "Legal Work API",
     "version": "v2"
   },
-  "paths": { },
+  "paths": {
+    "/api/v2/Empresa": {
+      "get": {
+        "tags": [
+          "Empresa"
+        ],
+        "summary": "Lista de Empresas Cadastradas",
+        "description": "Retorna uma lista contendo todas as empresas cadastradas no banco de dados.",
+        "parameters": [
+          {
+            "name": "Displacement",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "TotalRecords",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmpresaEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmpresaEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmpresaEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Empresa"
+        ],
+        "summary": "Cadastro de Empresa",
+        "description": "Cadastra uma nova empresa no banco de dados.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Empresa cadastrada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro ao cadastrar empresa."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Empresa"
+        ],
+        "summary": "Alteração no cadastro da empresa.",
+        "description": "Atualiza o cadastro de uma empresa no banco de dados.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Empresa atualizada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Empresa não encontrada."
+          }
+        }
+      }
+    },
+    "/api/v2/Empresa/{id}": {
+      "get": {
+        "tags": [
+          "Empresa"
+        ],
+        "summary": "Busca uma empresa apenas, através de seu ID",
+        "description": "Retorna uma empresa específica, com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empresa encontrada.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpresaEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Empresa não encontrada."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Empresa"
+        ],
+        "summary": "Deleção do cadastro de uma empresa.",
+        "description": "Deleta o cadastro de uma empresa a partir de seu ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empresa deletada com sucesso."
+          },
+          "404": {
+            "description": "Empresa não encontrada."
+          }
+        }
+      }
+    },
+    "/api/v2/Funcionario": {
+      "get": {
+        "tags": [
+          "Funcionario"
+        ],
+        "summary": "Lista de Funcionários",
+        "description": "Retorna uma lista completa com todos os funcionários cadastrados.",
+        "parameters": [
+          {
+            "name": "Displacement",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "TotalRecords",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de funcionários retornada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FuncionarioEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FuncionarioEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FuncionarioEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Funcionario"
+        ],
+        "summary": "Cadastro de Funcionário",
+        "description": "Cadastra um funcionário no banco de dados.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuncionarioDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuncionarioDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuncionarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Funcionário cadastrado com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro ao cadastrar funcionário."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Funcionario"
+        ],
+        "summary": "Alteração no cadastro do funcionário.",
+        "description": "Atualiza o cadastro de um funcionário no banco de dados.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuncionarioDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuncionarioDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuncionarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Funcionário atualizado com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Funcionário não encontrado."
+          }
+        }
+      }
+    },
+    "/api/v2/Funcionario/{id}": {
+      "get": {
+        "tags": [
+          "Funcionario"
+        ],
+        "summary": "Busca de um funcionário apenas, através de seu ID",
+        "description": "Retorna um funcionário específico, com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Funcionário encontrado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FuncionarioEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FuncionarioEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FuncionarioEntity"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Funcionário não encontrado."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Funcionario"
+        ],
+        "summary": "Deleção do cadastro de um funcionário.",
+        "description": "Deleta o cadastro de um funcionário a partir de seu ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Funcionário deletado com sucesso."
+          },
+          "404": {
+            "description": "Funcionário não encontrado."
+          }
+        }
+      }
+    },
+    "/api/v2/Jornada": {
+      "get": {
+        "tags": [
+          "Jornada"
+        ],
+        "summary": "Lista de Jornadas de Trabalho",
+        "description": "Retorna uma lista contendo as jornadas de trabalho cadastradas no banco de dados.",
+        "parameters": [
+          {
+            "name": "Displacement",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "TotalRecords",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JornadaEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JornadaEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JornadaEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Jornada"
+        ],
+        "summary": "Cadastro de Jornada de Trabalho",
+        "description": "Cadastra uma nova jornada de trabalho no banco de dados.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JornadaDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JornadaDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/JornadaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Jornada cadastrada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro ao cadastrar jornada."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Jornada"
+        ],
+        "summary": "Alteração no cadastro da jornada de trabalho.",
+        "description": "Atualiza o cadastro de uma jornada de trabalho no banco de dados.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JornadaDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JornadaDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/JornadaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Jornada atualizada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Jornada não encontrada."
+          }
+        }
+      }
+    },
+    "/api/v2/Jornada/{id}": {
+      "get": {
+        "tags": [
+          "Jornada"
+        ],
+        "summary": "Retorna uma jornada de trabalho apenas, através de seu ID",
+        "description": "Retorna uma jornada de trabalho específica, com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Jornada encontrada.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Jornada não encontrada."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Jornada"
+        ],
+        "summary": "Deleção do cadastro de uma jornada de trabalho.",
+        "description": "Deleta o cadastro de uma jornada de trabalho a partir de seu ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Jornada deletada com sucesso."
+          },
+          "404": {
+            "description": "Jornada não encontrada."
+          }
+        }
+      }
+    }
+  },
   "components": {
+    "schemas": {
+      "EmpresaDto": {
+        "type": "object",
+        "properties": {
+          "razaoSocial": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpj": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmpresaEntity": {
+        "required": [
+          "cnpj",
+          "endereco",
+          "id",
+          "razaoSocial",
+          "telefone"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "razaoSocial": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string"
+          },
+          "cnpj": {
+            "maxLength": 14,
+            "minLength": 0,
+            "type": "string"
+          },
+          "endereco": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string"
+          },
+          "telefone": {
+            "maxLength": 11,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FuncionarioDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FuncionarioEntity": {
+        "required": [
+          "cpf",
+          "email",
+          "endereco",
+          "id",
+          "nome",
+          "telefone"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nome": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string"
+          },
+          "cpf": {
+            "maxLength": 11,
+            "minLength": 0,
+            "type": "string"
+          },
+          "endereco": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string"
+          },
+          "telefone": {
+            "maxLength": 11,
+            "minLength": 0,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JornadaDto": {
+        "type": "object",
+        "properties": {
+          "dataInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "horasTrabalhadas": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JornadaEntity": {
+        "required": [
+          "dataInicio",
+          "horasTrabalhadas",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dataInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "horasTrabalhadas": {
+            "maxLength": 5,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
     "securitySchemes": {
       "Bearer": {
         "type": "http",
