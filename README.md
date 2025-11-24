@@ -1,4 +1,4 @@
-# 🏍️ Legal Work API
+# 💼 Legal Work API
 
 API REST desenvolvida em ASP.NET Core para gestão da jornada de trabalho de funcionários em empresas.
 O projeto utiliza **Entity Framework Core** com **Oracle Database** como banco de dados relacional.
